@@ -1,6 +1,6 @@
 # Natalia Del Coco
 
-# Acha incerteza nos filamentos detectados por SCMS
+# Acha incertezas nos filamentos detectados por SCMS
 #========================================================
 import sys
 import pandas as pd

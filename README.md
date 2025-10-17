@@ -38,25 +38,25 @@ python3 pattern_detection.py '/path/to/CWR/data.txt' 0.8 1000 1E-4
 
 ## Output files:
 
-- `realfil.txt:` [RA, DEC] coordinates of the detected filaments
-- `filaments.png:` Visualization of the filaments
+- `realfil.txt:` [RA, DEC] coordinates of the detected filaments.
+- `filaments.png:` Visualization of the filaments.
 
 
 
 # 3. Bootstrap uncertainty estimation
 
-Finally, the **bootstrap.py** script uses the resulting **realfil.txt** file for uncertaintiy estimation on the detected filaments. Be cautious that this step is computationally expensive and may take several hours.
+Finally, the **bootstrap.py** script uses the output **realfil.txt** file to estimate uncertainties in the detected filaments. Be aware that this step is computationally expensive and may take several hours.
 
-The same arguments described previously are entered:
+The same arguments described previously are used:
 
 ```
 python3 bootstrap.py -d -h -i -e
 ```
 
-There are two optional parameters:
+There are two additional optional parameters:
 
-- `-nj, --njobs:` number of cores. Default: (total system cores) - 2
-- `-nb, --nboots:` number of bootstrap samples. Default: 100
+- `-nj, --njobs:` number of CPU cores to use (`int`). Default: (total system cores) − 2
+- `-nb, --nboots:` number of bootstrap samples (`int`). Default: 100
 
 ## Example input:
 
@@ -66,26 +66,27 @@ python3 bootstrap.py '/path/to/CWR/data.txt' 0.8 1000 1E-4 -nj 1 -nb 50
 
 ## Output files:
 
-- `bootstrap_sample_i.txt:` resampled datasets, where i is in the range [1, nboots].
-- `bootstrap_fil_i.txt:` detected filaments for the i-th sample.
-- `finalfil.csv:` final file containing the filament coordinates and their errors. The columns are, respectively: RA, DEC, Error, Reject (if Reject == 1, the detection is unstable and the point should be disregarded).
-- `finalfil.png:` visualization of the stable filaments with errors.
+- `bootstrap_sample_i.txt:` resampled datasets, where _i_ ranges from 1 to _nboots_.
+- `bootstrap_fil_i.txt:` detected filaments for the _i_-th bootstrap sample.
+- `finalfil.csv:` file containing the filament coordinates and their associated errors.  
+  Columns are, respectively: **RA**, **DEC**, **Error**, **Reject** (if *Reject = 1*, the detection is unstable and the point should be disregarded).  
+- `finalfil.png:` visualization of the stable filaments with error bars.
 
 
 
-# Note: running standalone C++ code
+# Note: running the standalone C++ code
 
-If you desire to test the _find_filament_2d_ code alone, six parameters are to be used.
+If you wish to test the _find_filament_2d_ code independently, six parameters must be specified.
 
-### Example imput
+### Example input
 
 ```
 ./find_filament_2d -d '/path/to/CWR/data.txt' -h 0.230705 -i 10000 -t 0.0182435 -e 0.00001 -n filaments01.txt
 ```
 
-- `-d:`
-- `-h:`
-- `-i:`
-- `-t:`
-- `-e:`
-- `-n:` output filename
+- `-d:` Two-column `.txt` file containing the [RA, DEC] positions of all galaxies.
+- `-h:` Smoothing bandwidth parameter (`float`).
+- `-i:` Maximum number of iterations (`int`).
+- `-t:` Threshold parameter (`float`) controlling the density level used for filament detection.
+- `-e:` ε threshold (`float`).
+- `-n:` output filename (`string`) for the detected filaments.

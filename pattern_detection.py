@@ -45,10 +45,10 @@ def SCMS(data, SCMS_code, lin, h, iter, e):
 # ---------------- LÊ ENTRADAS ----------------
 # RODA NO DIRETÓRIO ONDE ESTÃO OS DADOS
 SCMS_code_fil = os.getcwd() + '/find_filament_2d'
-in_dt  = sys.argv[0]        # Dados originais, com as posições de todas as galáxias.
-A0_fil = float(sys.argv[1]) # Para a largura da gaussiana: h².
-iter   = str(sys.argv[2])   # Max iterações.
-e      = str(sys.argv[3])   # Err mínimo.
+in_dt  = sys.argv[1]        # Dados originais, com as posições de todas as galáxias.
+A0_fil = float(sys.argv[2]) # Para a largura da gaussiana: h².
+iter   = str(sys.argv[3])   # Max iterações.
+e      = str(sys.argv[4])   # Err mínimo.
 
 # ........ Lê pontos originais ........
 data   = pd.read_csv(in_dt, delimiter='\t')

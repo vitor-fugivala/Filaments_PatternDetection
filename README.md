@@ -22,13 +22,13 @@ _Note: requires the [Eigen](https://github.com/PX4/eigen/tree/master) library._
 Next, the **pattern_detection.py** script is executed with four arguments in the following order:
 
 ```
-python3 pattern_detection.py -d -h -i -e
+python3 pattern_detection.py <data> <bandwidth> <iter> <epsilon>
 ```
 
-- `-d:` Two-column `.txt` file containing the [RA, DEC] positions of all galaxies.
-- `-h:` _A_<sub>0</sub> parameter (`float`) defining the smoothing scale ([Eq. A1](https://academic.oup.com/mnras/article/454/1/1140/1138949)). Smaller values produce more filaments. Recommended range: [0.4, 0.8].
-- `-i:` Maximum number of iterations (`int`).
-- `-e:` ε threshold (`float`) — points stop moving once their displacement is less than this value. The algorithm terminates when all points have converged.
+- `<data>:` Two-column `.txt` file containing the [RA, DEC] positions of all galaxies.
+- `<bandwidth>:` _A_<sub>0</sub> parameter (`float`) defining the smoothing scale ([Eq. A1](https://academic.oup.com/mnras/article/454/1/1140/1138949)). Smaller values produce more filaments. Recommended range: [0.4, 0.8].
+- `<iter>:` Maximum number of iterations (`int`).
+- `<epsilon>:` ε threshold (`float`) — points stop moving once their displacement is less than this value. The algorithm terminates when all points have converged.
 
 ## Example input:
 
@@ -50,7 +50,7 @@ Finally, the **bootstrap.py** script uses the output **realfil.txt** file to est
 The same arguments described previously are used:
 
 ```
-python3 bootstrap.py -d -h -i -e
+python3 bootstrap.py <data> <bandwidth> <iter> <epsilon>
 ```
 
 There are two additional optional parameters:

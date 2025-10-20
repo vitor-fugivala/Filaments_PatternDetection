@@ -30,13 +30,13 @@ python3 pattern_detection.py <data> <bandwidth> <iter> <epsilon>
 - `<iter>:` Maximum number of iterations (`int`).
 - `<epsilon>:` ε threshold (`float`) — points stop moving once their displacement is less than this value. The algorithm terminates when all points have converged.
 
-## Example input:
+## Example input
 
 ```
 python3 pattern_detection.py '/path/to/CWR/data.txt' 0.8 1000 1E-4
 ```
 
-## Output files:
+## Output files
 
 - `realfil.txt:` [RA, DEC] coordinates of the detected filaments.
 - `filaments.png:` Visualization of the filaments.
@@ -58,13 +58,13 @@ There are two additional optional parameters:
 - `-nj, --njobs:` number of CPU cores to use (`int`). Default: (total system cores) − 2
 - `-nb, --nboots:` number of bootstrap samples (`int`). Default: 100
 
-## Example input:
+## Example input
 
 ```
 python3 bootstrap.py '/path/to/CWR/data.txt' 0.8 1000 1E-4 -nj 1 -nb 50
 ```
 
-## Output files:
+## Output files
 
 - `bootstrap_sample_i.txt:` resampled datasets, where _i_ ranges from 1 to _nboots_.
 - `bootstrap_fil_i.txt:` detected filaments for the _i_-th bootstrap sample.

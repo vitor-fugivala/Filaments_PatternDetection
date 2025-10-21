@@ -2,7 +2,7 @@ Cosmic Web Reconstruction algorithm (CWR) developed by [Chen et al. (2015)](http
 
 The procedure is divided into two parts. First, we run **pattern_detection.py** to detect the filaments. Then, **bootstrap.py** is used to estimate their uncertainties through bootstrap resampling.
 
-**_IMPORTANT: Bootstrap code runs CWR in parallel. Not to use more then 4 cores if RAM < 1TB._**
+**_IMPORTANT: Bootstrap code runs CWR in parallel. Not to use more than 4 cores if RAM < 1TB._**
 
 
 

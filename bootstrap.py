@@ -34,13 +34,16 @@ def closest_distance(node, nodes):
 # Executa o algoritmo Subspace Constrained Mean Shift (SCMS)
 # para amostras de bootstrap.
 def SCMS(data, SCMS_code, lin, h, inter, e):
+
+    # Cria pasta para armazenar as amostras bootstrap.
+    os.makedirs("Bootstrap samples", exist_ok=True)
     
     # Salva em arquivo .txt a amostra bootstrap de entrada.
-    in_btsp  = os.getcwd() + '/bootstrap_sample_'+'%s.txt' % (lin+1)
+    in_btsp  = os.getcwd() + '/Bootstrap samples/bootstrap_sample_'+'%s.txt' % (lin+1)
     np.savetxt(in_btsp, data, fmt=['%f', '%f'])
 
     # Salva em arquivo .txt os filamentos detectados.
-    out_btsp = os.getcwd() + '/bootstrap_fil_'+'%s.txt' % (lin+1)
+    out_btsp = os.getcwd() + '/Bootstrap samples/bootstrap_fil_'+'%s.txt' % (lin+1)
     subprocess.run([SCMS_code, '-d', in_btsp, '-h', str(h),
                     '-i', str(inter),'-e', str(e), '-n', out_btsp, '-q'])
     aux_R_btsp = np.loadtxt(out_btsp)
